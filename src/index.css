@@ -1,4 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
+  @apply bg-gradient-to-br from-gray-100 to-white text-black font-sans overflow-x-hidden;
+}
+
+h1, h2, h3, h4 {
+  @apply mb-2 font-bold;
+}
+
+a {
+  @apply text-blue-600 hover:underline transition duration-300 ease-in-out;
+}
+
+header {
+  @apply sticky top-0 z-50 backdrop-blur-md bg-white/80 shadow transition duration-500 ease-in-out;
+  animation: slideDown 0.6s ease-out;
+}
+
+nav a {
+  @apply mx-2 font-semibold hover:text-black transition-all duration-300 relative;
+}
+
+nav a::after {
+  content: "";
+  @apply absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300;
+}
+
+nav a:hover::after {
+  @apply w-full;
+}
+
+section {
+  @apply py-16 px-6 max-w-7xl mx-auto relative;
+}
+
+section#shop div {
+  @apply flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth;
+}
+
+section#shop div::-webkit-scrollbar {
+  height: 6px;
+}
+
+section#shop div::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  border-radius: 10px;
+}
+
+img {
+  @apply w-full h-48 object-cover rounded-xl transform transition-transform duration-500 hover:scale-105 shadow-md;
+}
+
+button, a.button {
+  @apply bg-black text-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-gradient-to-r hover:from-black hover:to-gray-800 hover:scale-105;
+}
+
+footer {
+  @apply bg-black text-white py-6 text-center text-sm animate-fade-in;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s ease-in-out forwards;
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+.animate-zoom-in {
+  animation: zoomIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
